@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHATECH - Cyber Tech Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(20, 20, 60, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(60, 20, 20, 0.3) 0%, transparent 40%);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(10, 10, 30, 0.7), rgba(5, 5, 15, 0.9)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23113366" stroke-width="0.5"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23113366" stroke-width="0.3"/></svg>');
+            background-size: cover, 300px;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(135deg, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.8));
+            color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #2a4365;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+            animation: header-glow 3s infinite linear;
+        }
+        
+        @keyframes header-glow {
+            0% { background-position: -100px 0; }
+            100% { background-position: 100px 0; }
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* MAIN LOGO STYLES */
+        .main-logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 20px #00ffff);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .main-logo:hover {
+            filter: drop-shadow(0 0 30px #ff00ff);
+            transform: scale(1.05);
+        }
+        
+        /* SECONDARY LOGO STYLES */
+        .secondary-logo {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 10px #ff00ff);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .secondary-logo:hover {
+            filter: drop-shadow(0 0 15px #00ffff);
+            transform: rotate(5deg);
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        .tagline {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #ff00ff;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .card {
+            background: rgba(20, 25, 40, 0.7);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #2a4365;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.2);
+        }
+        
+        h2 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a4365;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .whatsapp-section {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.9), rgba(18, 140, 126, 0.9));
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #25D366;
+        }
+        
+        .whatsapp-btn {
+            display: inline-block;
+            background: white;
+            color: #25D366;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-btn:hover {
+            background: #f1f1f1;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .warning-title {
+            color: #ffc107;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(30, 35, 50, 0.7);
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #2a4365;
+        }
+        
+        .feature:hover {
+            background: rgba(40, 45, 70, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 150, 255, 0.2);
+        }
+        
+        .feature i {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+        }
+        
+        .feature h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .feature p {
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+        
+        .survive-feature {
+            border-color: #ff00ff;
+        }
+        
+        .survive-feature i {
+            color: #ff00ff;
+            text-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+        
+        .last-guy-feature {
+            border-color: #00ff00;
+        }
+        
+        .last-guy-feature i {
+            color: #00ff00;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background: rgba(30, 35, 50, 0.7);
+            border: 1px solid #2a4365;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 150, 255, 0.2);
+        }
+        
+        .tiktok-link:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: #ff0050;
+        }
+        
+        .github-link:hover {
+            background: rgba(36, 41, 46, 0.8);
+            border-color: #ffffff;
+        }
+        
+        .telegram-link:hover {
+            background: rgba(0, 136, 204, 0.8);
+            border-color: #0088cc;
+        }
+        
+        /* NEW FEATURES */
+        .cyber-operatives {
+            color: #00ff00;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        
+        .quiz-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(10, 15, 30, 0.8);
+            border-radius: 8px;
+            border: 1px solid #00ffff;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-option {
+            padding: 12px;
+            background: rgba(30, 35, 50, 0.7);
+            border: 1px solid #2a4365;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(40, 45, 70, 0.9);
+            border-color: #00ffff;
+        }
+        
+        .quiz-option.selected {
+            background: rgba(0, 100, 200, 0.3);
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .quiz-result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .quiz-result.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            display: block;
+        }
+        
+        .quiz-result.fail {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            display: block;
+        }
+        
+        .emergency-panel {
+            background: rgba(255, 50, 50, 0.1);
+            border: 1px solid #ff3333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ff3333;
+            animation: emergency-pulse 2s infinite;
+        }
+        
+        @keyframes emergency-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .emergency-btn {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .emergency-btn:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        
+        .loading-text {
+            color: #00ffff;
+            font-size: 24px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        
+        .hacker-loader {
+            width: 80px;
+            height: 80px;
+            border: 5px solid transparent;
+            border-top: 5px solid #00ffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 20px #00ffff;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .binary-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        /* SECONDARY LOGO POSITION */
+        .logo-corner {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #2a4365;
+            position: relative;
+        }
+        
+        .footer-logo {
+            margin-top: 10px;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .main-logo {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .logo-corner {
+                position: static;
+                text-align: center;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="hacker-loader"></div>
+        <div class="loading-text">INITIALIZING SHATECH SYSTEMS...</div>
+        <div class="binary-rain" id="binaryRain"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <!-- Main Logo (logo1.png) -->
+            <img src="images/logo1.png" alt="SHATECH Main Logo" class="main-logo">
+            
+            <!-- Secondary Logo in corner (logo2.png) -->
+            <div class="logo-corner">
+                <img src="images/logo2.png" alt="SHATECH Secondary Logo" class="secondary-logo">
+            </div>
+            
+            <h1>SHATECH</h1>
+            <div class="tagline">BORN FROM SHADOW 💀 CLAN</div>
+            <p>Cyber Tech Education & Solutions</p>
+            
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@mr.last_guy" class="social-link tiktok-link" target="_blank">
+                    <i class="fab fa-tiktok"></i> @mr.last_guy
+                </a>
+                <a href="https://github.com/callmepirra07" class="social-link github-link" target="_blank">
+                    <i class="fab fa-github"></i> @callmepirra07
+                </a>
+                <a href="https://t.me/shadow_clan254" class="social-link telegram-link" target="_blank">
+                    <i class="fab fa-telegram"></i> Shadow Clan
+                </a>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="main-content">
+                <div class="card">
+                    <h2>Welcome to SHATECH</h2>
+                    <p>We are the shadow clan of the digital world, born to navigate the complexities of cyberspace and empower our <span class="cyber-operatives">CYBER OPERATIVES</span> to do the same.</p>
+                    <p>Our mission is to equip <span class="cyber-operatives">OPERATIVES</span> with the knowledge and skills to not just survive online, but to thrive and become the last one standing in the digital realm.</p>
+                    
+                    <div class="warning-box">
+                        <div class="warning-title">Important Notice</div>
+                        <p>This WhatsApp line is dedicated to business inquiries and cyber tech education only. Personal messages will not be responded to.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Our Cyber Tech Services</h2>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Free Online Cyber Tech Classes</h3>
+                            <p>Learn cybersecurity fundamentals and advanced techniques through our comprehensive free courses.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <h3>Web Development</h3>
+                            <p>Master front-end and back-end development to build powerful, secure web applications.</p>
+                        </div>
+                        <div class="feature survive-feature">
+                            <i class="fas fa-user-shield"></i>
+                            <h3>Teach You How to Survive Online</h3>
+                            <p>Learn digital self-defense, privacy protection, and how to navigate the online world safely.</p>
+                        </div>
+                        <div class="feature last-guy-feature">
+                            <i class="fas fa-crown"></i>
+                            <h3>Be the Last Guy Online</h3>
+                            <p>Advanced training to outlast and outperform others in the digital space. Become untouchable.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cyber Quiz Section -->
+                <div class="card">
+                    <h2>Cyber Security Quiz</h2>
+                    <p>Test your knowledge, <span class="cyber-operatives">OPERATIVE</span>. Can you survive the digital battlefield?</p>
+                    
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="quizQuestion">What is the most secure password practice?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="selectOption(this, 'A')">A) Use the same password everywhere</div>
+                            <div class="quiz-option" onclick="selectOption(this, 'B')">B) Use password manager + 2FA</div>
+                            <div class="quiz-option" onclick="selectOption(this, 'C')">C) Write passwords on sticky notes</div>
+                            <div class="quiz-option" onclick="selectOption(this, 'D')">D) Use pet names as passwords</div>
+                        </div>
+                        <button class="emergency-btn" onclick="checkAnswer()">SUBMIT ANSWER</button>
+                        <div class="quiz-result" id="quizResult"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="card">
+                    <h2>Contact Information</h2>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +254 727 286 139</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> shadow@shatECH.com</p>
+                    <p><i class="fas fa-clock"></i> <strong>Response Time:</strong> Within 24 hours</p>
+                </div>
+                
+                <div class="card">
+                    <h2>Training Hours</h2>
+                    <p><strong>Monday - Friday:</strong> 10:00 AM - 8:00 PM</p>
+                    <p><strong>Weekend Sessions:</strong> By appointment</p>
+                    <p><strong>Emergency Support:</strong> Available 24/7 for active <span class="cyber-operatives">OPERATIVES</span></p>
+                </div>
+
+                <!-- Emergency Panel -->
+                <div class="emergency-panel">
+                    <h2 style="color: #ff3333;">🚨 EMERGENCY PROTOCOL</h2>
+                    <p>If you're experiencing a security breach or cyber attack:</p>
+                    <ul style="margin: 10px 0 10px 20px;">
+                        <li>Disconnect from internet immediately</li>
+                        <li>Contact emergency support</li>
+                        <li>Do not power off devices</li>
+                        <li>Document everything</li>
+                    </ul>
+                    <button class="emergency-btn" onclick="initiateEmergency()">
+                        <i class="fas fa-bug"></i> INITIATE EMERGENCY PROTOCOL
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="whatsapp-section">
+            <h2>Ready to Begin Your Cyber Journey?</h2>
+            <p>Contact us on WhatsApp to enroll in our free cyber tech classes or discuss business opportunities.</p>
+            <a href="https://wa.me/254727286139" class="whatsapp-btn">
+                <i class="fab fa-whatsapp whatsapp-icon"></i> Start Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>SHATECH &copy; 2023 | Born From Shadow 💀 Clan | All Rights Reserved</p>
+        <!-- Secondary Logo in Footer -->
+        <div class="footer-logo">
+            <img src="images/logo2.png" alt="SHATECH Logo" class="secondary-logo">
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen with binary rain
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create binary rain effect
+            const binaryRain = document.getElementById('binaryRain');
+            const chars = '0101010101';
+            let binaryElements = '';
+            
+            for (let i = 0; i < 50; i++) {
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 5;
+                binaryElements += `<div style="position:absolute; left:${left}%; top:-20px; color:#00ff00; font-family:monospace; animation: fall ${duration}s linear ${delay}s infinite;">${chars}</div>`;
+            }
+            
+            binaryRain.innerHTML = binaryElements;
+            
+            // Hide loading screen after 3 seconds
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
+
+        // Quiz functionality
+        let selectedOption = null;
+        let selectedValue = null;
+
+        function selectOption(element, value) {
+            // Remove selected class from all options
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            selectedOption = element;
+            selectedValue = value;
+        }
+
+        function checkAnswer() {
+            const result = document.getElementById('quizResult');
+            
+            if (!selectedValue) {
+                result.textContent = "SELECT AN ANSWER, OPERATIVE!";
+                result.className = "quiz-result fail";
+                return;
+            }
+            
+            if (selectedValue === 'B') {
+                result.textContent = "ACCESS GRANTED! CORRECT ANSWER. YOU'RE READY FOR THE FIELD.";
+                result.className = "quiz-result success";
+            } else {
+                result.textContent = "ACCESS DENIED! VULNERABILITY DETECTED. TRAINING REQUIRED.";
+                result.className = "quiz-result fail";
+            }
+        }
+
+        function initiateEmergency() {
+            alert("🚨 EMERGENCY PROTOCOL ACTIVATED!\n\nConnecting you to SHATECH emergency response team...\n\nInitiate secure communication via WhatsApp for immediate assistance.");
+            window.open('https://wa.me/254727286139?text=EMERGENCY%20PROTOCOL%20ACTIVATED%20-%20I%20need%20immediate%20cyber%20assistance', '_blank');
+        }
+
+        // Add CSS for binary rain animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
