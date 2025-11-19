@@ -50,7 +50,7 @@
         
         header {
             text-align: center;
-            padding: 50px 0;
+            padding: 30px 0 50px 0;
             background: linear-gradient(135deg, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.8));
             color: #e0e0e0;
             border-radius: 10px;
@@ -509,16 +509,40 @@
         
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             margin-top: 40px;
             color: #6c757d;
             font-size: 14px;
             border-top: 1px solid #2a4365;
             position: relative;
+            background: rgba(10, 15, 30, 0.7);
+            border-radius: 10px;
         }
         
         .footer-logo {
-            margin-top: 10px;
+            margin: 20px 0;
+        }
+        
+        .typewriter-text {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            margin: 15px 0;
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00; }
         }
         
         .glow-text {
@@ -557,6 +581,10 @@
                 text-align: center;
                 margin-top: 15px;
             }
+            
+            .typewriter-text {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -570,14 +598,15 @@
 
     <div class="container">
         <header>
-            <!-- Main Logo (logo1.png) -->
-            <img src="images/logo1.png" alt="SHATECH Main Logo" class="main-logo">
-            
-            <!-- Secondary Logo in corner (logo2.png) -->
-            <div class="logo-corner">
-                <img src="images/logo2.png" alt="SHATECH Secondary Logo" class="secondary-logo">
+            <!-- Centered Logo5 at the Top -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="images/logo5.png" alt="SHATECH Logo" class="main-logo">
             </div>
             
+            <!-- Your existing header content -->
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+            </div>
             <h1>SHATECH</h1>
             <div class="tagline">BORN FROM SHADOW 💀 CLAN</div>
             <p>Cyber Tech Education & Solutions</p>
@@ -695,11 +724,15 @@
     </div>
     
     <footer>
-        <p>SHATECH &copy; 2023 | Born From Shadow 💀 Clan | All Rights Reserved</p>
-        <!-- Secondary Logo in Footer -->
+        <!-- Logo3 at the Bottom -->
         <div class="footer-logo">
-            <img src="images/logo2.png" alt="SHATECH Logo" class="secondary-logo">
+            <img src="images/logo3.png" alt="SHATECH Logo" class="secondary-logo">
         </div>
+        
+        <!-- Typewriter Text -->
+        <div class="typewriter-text">WE ARE COMING - ON THE WAY</div>
+        
+        <p>SHATECH &copy; 2023 | Born From Shadow 💀 Clan | All Rights Reserved</p>
     </footer>
 
     <script>
